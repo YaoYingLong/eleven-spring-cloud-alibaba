@@ -1,9 +1,9 @@
 package com.eleven.icode.malluser;
 
-import com.alibaba.cloud.nacos.ribbon.NacosRule;
-import com.netflix.loadbalancer.IRule;
+import com.eleven.icode.malluser.conf.ThreadPoolConf;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -11,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author by YingLong on 2021/10/18
  */
+//@ConfigurationPropertiesScan
+@EnableConfigurationProperties(value = ThreadPoolConf.class)
 @SpringBootApplication
 public class MallUserAppliction {
 

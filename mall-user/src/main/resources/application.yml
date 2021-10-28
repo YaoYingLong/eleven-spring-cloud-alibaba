@@ -10,6 +10,11 @@ spring:
         server-addr: 172.20.167.161:8848 #配置nacos注册中心地址
         ephemeral: false
 
+eleven:
+  task:
+    core: 10
+    max: 25
+
 #mall-order: # 被调用的微服务名
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
