@@ -1,8 +1,13 @@
 package com.eleven.icode.malluser.controller;
 
+import com.eleven.icode.malluser.config.ExtAddrConf;
 import com.eleven.icode.malluser.entity.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,9 +19,15 @@ import org.springframework.web.client.RestTemplate;
  */
 @Slf4j
 @RestController
+@RefreshScope
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserController implements InitializingBean, DisposableBean {
 
+
+    @Value(value = "${test.main.name}")
+    private String addr;
+    @Autowired
+    private ExtAddrConf conf;
     @Autowired
     private RestTemplate restTemplate;
 
@@ -28,4 +39,24 @@ public class UserController {
         return null;
     }
 
+    @RequestMapping(value = "value")
+    public String value() {
+        return addr;
+    }
+
+    @RequestMapping(value = "conf")
+    public ExtAddrConf conf() {
+        return conf;
+    }
+
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("UserController init");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("UserController destroy");
+    }
 }
