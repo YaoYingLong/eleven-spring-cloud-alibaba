@@ -30,6 +30,8 @@ public class UserController implements InitializingBean, DisposableBean {
     private ExtAddrConf conf;
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private ThreadPoolConf threadPoolConf;
 
     @RequestMapping(value = "findOrderByUserId/{userId}")
     public User getUser(@PathVariable(value = "userId") Integer userId) {
@@ -58,5 +60,10 @@ public class UserController implements InitializingBean, DisposableBean {
     @Override
     public void destroy() throws Exception {
         System.out.println("UserController destroy");
+    }
+
+    @RequestMapping(value = "getConf")
+    private ThreadPoolConf getConf() {
+        return threadPoolConf;
     }
 }
