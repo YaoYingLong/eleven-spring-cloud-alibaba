@@ -1,6 +1,7 @@
 package com.eleven.icode.malluser.controller;
 
 import com.eleven.icode.malluser.config.ExtAddrConf;
+import com.eleven.icode.malluser.config.ThreadPoolConf;
 import com.eleven.icode.malluser.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
