@@ -37,8 +37,8 @@ public class UserController implements InitializingBean, DisposableBean {
     private ThreadPoolConf threadPoolConf;
 
     @RequestMapping(value = "findOrderByUserId/{userId}")
-    @SentinelResource(value = "getUser", fallback = "fallback", fallbackClass = ExceptionUtil.class,
-            blockHandler = "handleException", blockHandlerClass = ExceptionUtil.class)
+//    @SentinelResource(value = "getUser", fallback = "fallback", fallbackClass = ExceptionUtil.class,
+//            blockHandler = "handleException", blockHandlerClass = ExceptionUtil.class)
     public Object getUser(@PathVariable(value = "userId") Integer userId) {
         log.info("根据userId:" + userId + "查询订单信息");
         String url = "http://mall-order/order/findOrderByUserId/" + userId;

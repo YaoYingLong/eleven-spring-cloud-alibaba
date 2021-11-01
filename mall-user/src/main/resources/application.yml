@@ -30,3 +30,11 @@ eleven:
 #mall-order: # 被调用的微服务名
 #  ribbon:
 #    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+
+#true开启sentinel对resttemplate的支持，false则关闭  默认true
+resttemplate:
+  sentinel:
+    enabled: true
+feign:
+  sentinel:
+    enabled: true
