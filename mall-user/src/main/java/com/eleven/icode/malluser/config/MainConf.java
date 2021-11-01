@@ -7,8 +7,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 /**
  * @author by YingLong on 2021/10/31
  */
-@RefreshScope
-@ConfigurationProperties(prefix = "test.main")
+//@ConfigurationProperties(prefix = "test.main")
 public class MainConf implements InitializingBean {
     private String name;
     private Integer age;

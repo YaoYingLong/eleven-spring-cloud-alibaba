@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author by YingLong on 2021/10/31
  */
-@ConfigurationProperties(prefix = "test.shared")
+//@ConfigurationProperties(prefix = "test.shared")
 public class ShareAddrConf implements InitializingBean {
     private String addr;
 

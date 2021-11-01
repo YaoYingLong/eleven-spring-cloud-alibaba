@@ -7,8 +7,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 /**
  * @author by YingLong on 2021/10/31
  */
-@RefreshScope
-@ConfigurationProperties(prefix = "test.ext")
+//@ConfigurationProperties(prefix = "test.ext")
 public class ExtAddrConf implements InitializingBean {
     private String addr;
 

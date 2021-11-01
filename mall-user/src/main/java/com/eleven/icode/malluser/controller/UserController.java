@@ -1,5 +1,7 @@
 package com.eleven.icode.malluser.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.nacos.common.utils.ExceptionUtil;
 import com.eleven.icode.malluser.config.ExtAddrConf;
 import com.eleven.icode.malluser.config.ThreadPoolConf;
 import com.eleven.icode.malluser.entity.User;
@@ -25,21 +27,23 @@ import org.springframework.web.client.RestTemplate;
 public class UserController implements InitializingBean, DisposableBean {
 
 
-    @Value(value = "${test.main.name}")
+    @Value(value = "${test.main.name: aa}")
     private String addr;
-    @Autowired
-    private ExtAddrConf conf;
+//    @Autowired
+//    private ExtAddrConf conf;
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
     private ThreadPoolConf threadPoolConf;
 
     @RequestMapping(value = "findOrderByUserId/{userId}")
-    public User getUser(@PathVariable(value = "userId") Integer userId) {
+    @SentinelResource(value = "getUser", fallback = "fallback", fallbackClass = ExceptionUtil.class,
+            blockHandler = "handleException", blockHandlerClass = ExceptionUtil.class)
+    public Object getUser(@PathVariable(value = "userId") Integer userId) {
         log.info("根据userId:" + userId + "查询订单信息");
         String url = "http://mall-order/order/findOrderByUserId/" + userId;
         Object result = restTemplate.getForObject(url, Object.class);
-        return null;
+        return result;
     }
 
     @RequestMapping(value = "value")
@@ -49,7 +53,7 @@ public class UserController implements InitializingBean, DisposableBean {
 
     @RequestMapping(value = "conf")
     public ExtAddrConf conf() {
-        return conf;
+        return null;
     }
 
 
