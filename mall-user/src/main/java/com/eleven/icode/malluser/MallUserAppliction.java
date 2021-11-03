@@ -27,10 +27,10 @@ public class MallUserAppliction {
 
     @Bean
     @LoadBalanced
-    @SentinelRestTemplate(
-            blockHandler = "handleException",blockHandlerClass = GlobalExceptionUtil.class,
-            fallback = "fallback",fallbackClass = GlobalExceptionUtil.class
-    )
+//    @SentinelRestTemplate(
+//            blockHandler = "handleException",blockHandlerClass = GlobalExceptionUtil.class,
+//            fallback = "fallback",fallbackClass = GlobalExceptionUtil.class
+//    )
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
