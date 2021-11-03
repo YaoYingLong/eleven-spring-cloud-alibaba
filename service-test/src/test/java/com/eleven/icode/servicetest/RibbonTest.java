@@ -34,4 +34,25 @@ public class RibbonTest {
     private int distroHash(String serviceName) {
         return Math.abs(serviceName.hashCode() % Integer.MAX_VALUE);
     }
+
+    @Test
+    public void testCalculateTimeIdx() throws InterruptedException {
+        for (int i = 0; i < 10000; i++) {
+            long time = System.currentTimeMillis();
+            calculateTimeIdx(time);
+            Thread.sleep(100);
+        }
+    }
+
+    private int calculateTimeIdx(/*@Valid*/ long timeMillis) {
+        long timeId = timeMillis / 500;
+        // Calculate current index so we can map the timestamp to the leap array.
+        int index = (int)(timeId % 2);
+        System.out.println("timeId =" + timeId + ", index=" + index + ", start=" + calculateWindowStart(timeMillis)+ ", timeMillis=" + calculateWindowStart(timeMillis));
+        return index;
+    }
+
+    protected long calculateWindowStart(/*@Valid*/ long timeMillis) {
+        return timeMillis - timeMillis % 500;
+    }
 }
