@@ -1,10 +1,8 @@
 package com.eleven.icode.malluser.controller;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.nacos.common.utils.ExceptionUtil;
+import com.eleven.icode.malluser.client.OrderFeignService;
 import com.eleven.icode.malluser.config.ExtAddrConf;
 import com.eleven.icode.malluser.config.ThreadPoolConf;
-import com.eleven.icode.malluser.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,12 +26,14 @@ public class UserController implements InitializingBean, DisposableBean {
 
     @Value(value = "${test.main.name: aa}")
     private String addr;
-//    @Autowired
+    //    @Autowired
 //    private ExtAddrConf conf;
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
     private ThreadPoolConf threadPoolConf;
+    @Autowired
+    private OrderFeignService orderFeignService;
 
     @RequestMapping(value = "findOrderByUserId/{userId}")
 //    @SentinelResource(value = "getUser", fallback = "fallback", fallbackClass = ExceptionUtil.class,
@@ -43,6 +42,15 @@ public class UserController implements InitializingBean, DisposableBean {
         log.info("根据userId:" + userId + "查询订单信息");
         String url = "http://mall-order/order/findOrderByUserId/" + userId;
         Object result = restTemplate.getForObject(url, Object.class);
+        return result;
+    }
+
+    @RequestMapping(value = "findOrderByUserIdV2/{userId}")
+//    @SentinelResource(value = "getUser", fallback = "fallback", fallbackClass = ExceptionUtil.class,
+//            blockHandler = "handleException", blockHandlerClass = ExceptionUtil.class)
+    public Object getUserV2(@PathVariable(value = "userId") Integer userId) {
+        log.info("根据userId:" + userId + "查询订单信息");
+        Object result = orderFeignService.findOrderByUserId(userId);
         return result;
     }
 

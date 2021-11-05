@@ -5,13 +5,13 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.eleven.icode.malluser.entity.ElevenResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.netflix.client.http.HttpRequest;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 
 /**
  * @author by YingLong on 2021/11/1
  */
-public class GlobalExceptionUtil {
+public class GlobalExceptionHandler {
     public static SentinelClientHttpResponse handleException(HttpRequest request, byte[] body, ClientHttpRequestExecution execution, BlockException ex) {
         ElevenResponse r = new ElevenResponse(-1, "===被限流啦===");
         try {
