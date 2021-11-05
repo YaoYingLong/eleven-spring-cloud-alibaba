@@ -32,6 +32,17 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-extension</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+        <!-- sentinel规则pull模式依赖 改造拉模式实现-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-extension-file-pull</artifactId>
+            <version>1.8.0</version>
+        </dependency>
     </dependencies>
 
 </project>
