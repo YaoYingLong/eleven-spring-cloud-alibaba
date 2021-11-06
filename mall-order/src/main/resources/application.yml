@@ -22,40 +22,35 @@ spring:
         ds-flow:
           nacos:
             server-addr: 127.0.0.1:8848
-            dataId: ${spring.application.name}-flow
-            groupId: DEFAULT_GROUP
-            namespace: sentinel
+            dataId: ${spring.application.name}-flow-rules
+            groupId: SENTINEL_GROUP
             data-type: json
             rule-type: flow
         ds-degrade:
           nacos:
             server-addr: 127.0.0.1:8848
-            dataId: ${spring.application.name}-degrade
-            groupId: DEFAULT_GROUP
-            namespace: sentinel
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: SENTINEL_GROUP
             data-type: json
             rule-type: degrade
         ds-param-flow:
           nacos:
             server-addr: 127.0.0.1:8848
-            dataId: ${spring.application.name}-param-flow
-            groupId: DEFAULT_GROUP
-            namespace: sentinel
+            dataId: ${spring.application.name}-param-rules
+            groupId: SENTINEL_GROUP
             data-type: json
             rule-type: param-flow
         ds-system:
           nacos:
             server-addr: 127.0.0.1:8848
-            dataId: ${spring.application.name}-system
-            groupId: DEFAULT_GROUP
-            namespace: sentinel
+            dataId: ${spring.application.name}-system-rules
+            groupId: SENTINEL_GROUP
             data-type: json
             rule-type: system
         ds-authority:
           nacos:
             server-addr: 127.0.0.1:8848
-            dataId: ${spring.application.name}-authority
-            groupId: DEFAULT_GROUP
-            namespace: sentinel
+            dataId: ${spring.application.name}-authority-rules
+            groupId: SENTINEL_GROUP
             data-type: json
             rule-type: authority
