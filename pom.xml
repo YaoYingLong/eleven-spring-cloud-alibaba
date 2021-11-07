@@ -11,6 +11,7 @@
         <module>mall-order</module>
         <module>mall-user</module>
         <module>service-test</module>
+        <module>mall-storage</module>
     </modules>
     <packaging>pom</packaging>
 
