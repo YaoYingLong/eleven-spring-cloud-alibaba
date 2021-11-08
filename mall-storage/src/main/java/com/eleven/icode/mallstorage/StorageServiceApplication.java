@@ -1,19 +1,13 @@
-package com.eleven.icode.mallorder;
+package com.eleven.icode.mallstorage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
-/**
- * @author by YingLong on 2021/10/18
- */
 @SpringBootApplication
-@EnableFeignClients
-public class MallOrderAppliction {
+public class StorageServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MallOrderAppliction.class, args);
+        SpringApplication.run(StorageServiceApplication.class, args);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.eleven.icode.mallorder.entity;
+package com.eleven.icode.mallorder.vo;
 
 import lombok.Data;
 
@@ -6,16 +6,12 @@ import lombok.Data;
  * @author Fox
  */
 @Data
-public class Order {
-    private Integer id;
-    
+public class OrderVo {
     private String userId;
-    /** 商品编号 */
+    /**商品编号**/
     private String commodityCode;
     
     private Integer count;
     
     private Integer money;
-    
-    private Integer status;
 }
