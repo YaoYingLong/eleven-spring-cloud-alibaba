@@ -1,0 +1,82 @@
+server:
+  port: 8050
+
+spring:
+  application:
+    name: mall-gateway  #微服务名称
+
+  #配置nacos注册中心地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        ephemeral: false
+        namespace: seata
+    alibaba:
+      seata:
+        tx-service-group:
+          my_test_tx_group  #seata 服务事务分组
+
+    sentinel:
+      transport:
+        # 添加sentinel的控制台地址
+        dashboard: 127.0.0.1:8080
+        # 指定应用与Sentinel控制台交互的端口，应用本地会起一个该端口占用的HttpServer
+        port: 8719
+    gateway:
+      discovery:
+        # 是否开启网关
+        enabled: true
+        locator:
+          # 默认为false，设为true开启通过微服务创建路由的功能，即可以通过微服务名访问服务
+          enabled: true
+      globalcors: # 跨域配置
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+      #设置路由：路由id、路由到微服务的uri、断言
+      routes:
+        - id: mall-order  #路由ID，全局唯一，建议配合服务名
+          uri: lb://mall-order #目标微服务的请求地址和端口
+          predicates:
+            # 匹配在指定的日期范围内发生的请求  入参是ZonedDateTime类型
+#            - Between=2021-11-10T14:49:26.193+08:00[Asia/Shanghai], 2021-11-10T14:50:26.193+08:00[Asia/Shanghai]
+            # Cookie匹配
+#            - Cookie=username, eleven
+            # Header匹配  请求中带有请求头名为 x-request-id，其值与 \d+ 正则表达式匹配
+#            - Header=X-Request-Id, \d+
+            - Path=/order/** # Path路径匹配
+#            - CheckAuth=eleven
+          filters:
+            - AddRequestHeader=X-Request-color, red  #添加请求头
+            - AddRequestParameter=color, blue  # 添加请求参数
+            - CheckAuth=eleven,男
+#            - RedirectTo=302, https://www.baidu.com/  #重定向到百度
+#            - PrefixPath=/mall-order  # 添加前缀 对应微服务需要配置context-path
+        - id: mall-user  #路由ID，全局唯一，建议配合服务名
+          uri: lb://mall-user #目标微服务的请求地址和端口
+          predicates:
+            # 匹配在指定的日期范围内发生的请求  入参是ZonedDateTime类型
+            #            - Between=2021-11-10T14:49:26.193+08:00[Asia/Shanghai], 2021-11-10T14:50:26.193+08:00[Asia/Shanghai]
+            # Cookie匹配
+            #            - Cookie=username, eleven
+            # Header匹配  请求中带有请求头名为 x-request-id，其值与 \d+ 正则表达式匹配
+            #            - Header=X-Request-Id, \d+
+            - Path=/user/** # Path路径匹配
+          #            - CheckAuth=eleven
+          filters:
+            - AddRequestHeader=X-Request-color, red  #添加请求头
+            - AddRequestParameter=color, blue  # 添加请求参数
+            - CheckAuth=eleven,男
+      #            - RedirectTo=302, https://www.baidu.com/  #重定向到百度
+      #            - PrefixPath=/mall-order  # 添加前缀 对应微服务需要配置context-path
+
+#logging:
+#  level:
+#    com.eleven: debug

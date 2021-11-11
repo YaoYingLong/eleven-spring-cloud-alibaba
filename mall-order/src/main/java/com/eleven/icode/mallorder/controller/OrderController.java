@@ -28,6 +28,18 @@ public class OrderController {
     public ResultVo createOrder(@RequestBody OrderVo orderVo) throws Exception {
         log.info("收到下单请求,用户:{}, 商品编号:{}", orderVo.getUserId(), orderVo.getCommodityCode());
         Order order = orderService.saveOrder(orderVo);
-        return ResultVo.ok().put("order",order);
+        return ResultVo.ok().put("order", order);
+    }
+
+    @GetMapping(value = "/testgateway")
+    public String testGateway(@RequestHeader(value = "X-Request-color") String color) throws Exception {
+        log.info("gateWay获取请求头X-Request-color：" + color);
+        return "success";
+    }
+
+    @GetMapping(value = "/testgateway2")
+    public String testGateway2(@RequestParam(value = "color") String color) throws Exception {
+        log.info("gateWay获取请color：" + color);
+        return "success";
     }
 }
