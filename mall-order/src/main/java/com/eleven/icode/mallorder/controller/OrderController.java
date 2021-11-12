@@ -42,4 +42,21 @@ public class OrderController {
         log.info("gateWay获取请color：" + color);
         return "success";
     }
+
+    @RequestMapping(value = "/info/{id}")
+    public Order info(@PathVariable(value = "id") Integer id){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return orderService.getById(id);
+    }
+
+    @RequestMapping("/notify")
+    public String notify(@RequestBody Object obj){
+        //TODO 告警信息，给技术负责人发短信，钉钉消息，邮件，微信通知等
+        System.err.println(obj.toString());
+        return "notify successfully";
+    }
 }

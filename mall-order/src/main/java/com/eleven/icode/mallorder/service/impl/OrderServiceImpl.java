@@ -56,4 +56,9 @@ public class OrderServiceImpl implements OrderService {
         log.info("更新订单id:{} {}", order.getId(), updateOrderRecord > 0 ? "成功" : "失败");
         return order;
     }
+
+    @Override
+    public Order getById(Integer id) {
+        return orderMapper.getById(id);
+    }
 }

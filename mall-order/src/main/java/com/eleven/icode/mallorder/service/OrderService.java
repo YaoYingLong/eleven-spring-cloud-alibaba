@@ -12,4 +12,6 @@ public interface OrderService {
      * 保存订单
      */
     Order saveOrder(OrderVo orderVo) throws TransactionException;
+
+    Order getById(Integer id);
 }
