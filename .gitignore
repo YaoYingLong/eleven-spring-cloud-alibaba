@@ -1,0 +1,101 @@
+# Created by .ignore support plugin (hsz.mobi)
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/
+*.iml
+
+# CMake
+cmake-build-*/
+
+# Mongo Explorer plugin
+.idea/**/mongoSettings.xml
+
+# File-based project format
+*.iws
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Cursive Clojure plugin
+.idea/replstate.xml
+
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.idea/.gitignore
+.idea/codeStyles/
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/inspectionProfiles/
+.idea/kotlinc.xml
+.idea/misc.xml
+.idea/sbt.xml
+.idea/thriftCompiler.xml
+.idea/vcs.xml
+eleven-redis/src/test/
+eleven-spring-cloud-alibaba.iml
+mall-order/src/test/
+mall-order/target/classes/application.yml
+mall-order/target/classes/appliction.yml
+mall-order/target/classes/bootstrap.properties
+mall-order/target/classes/order_tbl.sql
+mall-order/target/classes/registry.conf
+mall-order/target/generated-sources/
+mall-order/target/generated-test-sources/
+mall-order/target/maven-archiver/
+mall-order/target/maven-status/
+mall-order/target/test-classes/
+mall-storage/target/classes/application.yml
+mall-storage/target/classes/registry.conf
+mall-storage/target/classes/storage_tbl.sql
+mall-storage/target/generated-sources/
+mall-storage/target/generated-test-sources/
+mall-storage/target/test-classes/db.sql
+mall-user/src/test/
+mall-user/target/classes/META-INF/
+mall-user/target/classes/account_tbl.sql
+mall-user/target/classes/application.yml
+mall-user/target/classes/bootstrap.properties
+mall-user/target/classes/registry.conf
+mall-user/target/classes/undo_log.sql
+mall-user/target/generated-sources/
+mall-user/target/generated-test-sources/
+mall-user/target/maven-archiver/
+mall-user/target/maven-status/
+mall-user/target/test-classes/
+service-test/target/classes/META-INF/
+service-test/target/classes/application.yml
+service-test/target/generated-sources/
+service-test/target/generated-test-sources/
+transaction-logs/tmlog.lck
