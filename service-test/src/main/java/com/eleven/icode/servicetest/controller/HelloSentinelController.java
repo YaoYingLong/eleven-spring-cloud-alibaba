@@ -10,9 +10,11 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import com.eleven.icode.servicetest.util.ExceptionUtil;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.eleven.icode.servicetest.client.OrderFeignService;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -25,7 +27,17 @@ import java.util.List;
 @RestController
 public class HelloSentinelController {
 
+    @Autowired
+    private OrderFeignService orderFeignService;
+
     private static final String RESOURCE_NAME = "hello";
+
+    @RequestMapping(value = "testFeign")
+    public String test() {
+        orderFeignService.findOrderByUserId(11);
+        return "success";
+    }
+
 
     @RequestMapping(value = RESOURCE_NAME)
     public String hello() {

@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class RibbonTest {
 
-    @Test
+//    @Test
     public void listHashTest() {
         System.out.println(TimeUnit.SECONDS.toMillis(15L));
         System.out.println(RandomUtils.nextLong(0, TimeUnit.SECONDS.toMillis(15L)));
@@ -35,7 +35,7 @@ public class RibbonTest {
         return Math.abs(serviceName.hashCode() % Integer.MAX_VALUE);
     }
 
-    @Test
+//    @Test
     public void testCalculateTimeIdx() throws InterruptedException {
         for (int i = 0; i < 10000; i++) {
             long time = System.currentTimeMillis();

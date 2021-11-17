@@ -15,9 +15,9 @@ public interface OrderMapper {
      * @param record
      * @return
      */
-    @Insert(value = "INSERT INTO order_tbl (user_id, commodity_code, count, status, money) VALUES (#{userId}, #{commodityCode}, #{count}, #{status}, #{money})")
+    @Insert(value = "INSERT INTO order_tbl (user_id, commodity_code, count, status, money) VALUES (#{record.userId}, #{record.commodityCode}, #{record.count}, #{record.status}, #{record.money})")
     @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
-    int insert(Order record);
+    int insert(@Param(value = "record") Order record);
 
     /**
      * 更新订单状态
@@ -27,5 +27,8 @@ public interface OrderMapper {
      */
     @Update("UPDATE order_tbl SET status = #{status} WHERE id = #{id}")
     int updateOrderStatus(@Param("id") Integer id, @Param("status") int status);
+
+    @Select(value = "select * from order_tbl WHERE id = #{id}")
+    Order getById(Integer id);
 }
 

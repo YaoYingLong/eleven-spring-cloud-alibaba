@@ -12,6 +12,7 @@
         <module>mall-user</module>
         <module>service-test</module>
         <module>mall-storage</module>
+        <module>mall-gateway</module>
         <module>eleven-redis</module>
     </modules>
     <packaging>pom</packaging>
