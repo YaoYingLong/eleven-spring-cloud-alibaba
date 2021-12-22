@@ -7,13 +7,11 @@ import org.junit.Test;
 
 @Slf4j
 public class BaseOperations  extends StandaloneBase{
-
     private String first_node = "/first-node";
 
     @Test
     public void testCreate() throws KeeperException, InterruptedException {
         ZooKeeper zooKeeper = getZooKeeper();
-
         String s = zooKeeper.create(first_node, "first".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
         log.info("Create:{}",s);
     }

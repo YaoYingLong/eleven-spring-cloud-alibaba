@@ -1,6 +1,5 @@
 package com.eleven.icloud.elevenzk;
 
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
@@ -81,9 +80,9 @@ public class ZookeeperClientTest {
     public void setTest() throws KeeperException, InterruptedException {
         Stat stat = new Stat();
         byte[] data = zooKeeper.getData(ZK_NODE, false, stat);
-        log.info("修改前: {}",new String(data));
+        log.info("修改前: {}", new String(data));
         zooKeeper.setData(ZK_NODE, "changed!".getBytes(), stat.getVersion());
         byte[] dataAfter = zooKeeper.getData(ZK_NODE, false, stat);
-        log.info("修改后: {}",new String(dataAfter));
+        log.info("修改后: {}", new String(dataAfter));
     }
 }
