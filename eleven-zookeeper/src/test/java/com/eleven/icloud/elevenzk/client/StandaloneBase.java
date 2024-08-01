@@ -13,33 +13,32 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public abstract class  StandaloneBase {
+public abstract class StandaloneBase {
 
-    private static final  String  CONNECT_STR="192.168.109.200:2181";
+    private static final String CONNECT_STR = "192.168.109.200:2181";
 
-    private static final  int SESSION_TIMEOUT=30 * 1000;
+    private static final int SESSION_TIMEOUT = 30 * 1000;
 
-    private static ZooKeeper zooKeeper =null;
+    private static ZooKeeper zooKeeper = null;
 
-    private static  CountDownLatch countDownLatch = new CountDownLatch(1);
+    private static CountDownLatch countDownLatch = new CountDownLatch(1);
 
-    private Watcher watcher =new Watcher() {
+    private Watcher watcher = new Watcher() {
         @Override
         public void process(WatchedEvent event) {
-                    if (event.getState() == Event.KeeperState.SyncConnected
-                            && event.getType()== Event.EventType.None){
-                        countDownLatch.countDown();
-                        log.info("连接建立");
-                    }
+            if (event.getState() == Event.KeeperState.SyncConnected
+                    && event.getType() == Event.EventType.None) {
+                countDownLatch.countDown();
+                log.info("连接建立");
+            }
         }
     };
 
-
     @Before
-    public void init(){
+    public void init() {
         try {
-            log.info(" start to connect to zookeeper server: {}",getConnectStr());
-             zooKeeper=new ZooKeeper(getConnectStr(), getSessionTimeout(), watcher);
+            log.info(" start to connect to zookeeper server: {}", getConnectStr());
+            zooKeeper = new ZooKeeper(getConnectStr(), getSessionTimeout(), watcher);
             log.info(" 连接中...");
             countDownLatch.await();
         } catch (IOException e) {
@@ -49,17 +48,12 @@ public abstract class  StandaloneBase {
         }
     }
 
-
-
-
-
     public static ZooKeeper getZooKeeper() {
         return zooKeeper;
     }
 
-
     @After
-    public void   test(){
+    public void test() {
         try {
             TimeUnit.SECONDS.sleep(Integer.MAX_VALUE);
         } catch (InterruptedException e) {
@@ -67,12 +61,11 @@ public abstract class  StandaloneBase {
         }
     }
 
-
-    protected     String getConnectStr(){
+    protected String getConnectStr() {
         return CONNECT_STR;
     }
 
-    protected   int getSessionTimeout() {
+    protected int getSessionTimeout() {
         return SESSION_TIMEOUT;
     }
 }
