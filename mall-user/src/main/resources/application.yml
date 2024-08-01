@@ -7,19 +7,20 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848 #配置nacos注册中心地址
+        #配置nacos注册中心地址
+        server-addr: 127.0.0.1:8848
 #        ephemeral: false
-        namespace: seata
+        namespace: public
     sentinel:
       transport:
         # 添加sentinel的控制台地址
         dashboard: 127.0.0.1:8080
         # 指定应用与Sentinel控制台交互的端口，应用本地会起一个该端口占用的HttpServer
         # port: 8719
-    alibaba:
-      seata:
-        tx-service-group:
-          my_test_tx_group # seata 服务事务分组
+#    alibaba:
+#      seata:
+#        tx-service-group:
+#          my_test_tx_group # seata 服务事务分组
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

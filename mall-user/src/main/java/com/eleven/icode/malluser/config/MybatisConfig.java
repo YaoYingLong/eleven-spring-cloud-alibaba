@@ -1,7 +1,6 @@
 package com.eleven.icode.malluser.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import io.seata.rm.datasource.DataSourceProxy;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -19,8 +18,8 @@ import javax.sql.DataSource;
  * <p>
  * 需要用到分布式事务的微服务都需要使用seata DataSourceProxy代理自己的数据源
  */
-@Configuration
-@MapperScan(value = "com.eleven.icode.malluser.mapper")
+//@Configuration
+//@MapperScan(value = "com.eleven.icode.malluser.mapper")
 public class MybatisConfig {
 
     /**

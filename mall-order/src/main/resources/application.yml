@@ -10,12 +10,12 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-        ephemeral: false
-        namespace: seata
-    alibaba:
-      seata:
-        tx-service-group:
-          my_test_tx_group  #seata 服务事务分组
+#        ephemeral: false
+        namespace: public
+#    alibaba:
+#      seata:
+#        tx-service-group:
+#          my_test_tx_group  #seata 服务事务分组
 
     sentinel:
       transport:

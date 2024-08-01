@@ -7,8 +7,8 @@ import com.eleven.icode.mallorder.entity.OrderStatus;
 import com.eleven.icode.mallorder.mapper.OrderMapper;
 import com.eleven.icode.mallorder.service.OrderService;
 import com.eleven.icode.mallorder.vo.OrderVo;
-import io.seata.core.context.RootContext;
-import io.seata.spring.annotation.GlobalTransactional;
+//import io.seata.core.context.RootContext;
+//import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,10 +28,10 @@ public class OrderServiceImpl implements OrderService {
     private StorageFeignService storageFeignService;
 
     @Override
-    @GlobalTransactional(name = "createOrder")
+//    @GlobalTransactional(name = "createOrder")
     public Order saveOrder(OrderVo orderVo) {
         log.info("=============用户下单=================");
-        log.info("当前 XID: {}", RootContext.getXID());
+//        log.info("当前 XID: {}", RootContext.getXID());
 
         // 保存订单
         Order order = new Order();

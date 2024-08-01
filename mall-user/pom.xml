@@ -67,21 +67,21 @@
         </dependency>
 
         <!-- seata-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>seata-spring-boot-starter</artifactId>
-                    <groupId>io.seata</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <artifactId>seata-spring-boot-starter</artifactId>
-            <groupId>io.seata</groupId>
-            <version>1.4.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>seata-spring-boot-starter</artifactId>-->
+<!--                    <groupId>io.seata</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <artifactId>seata-spring-boot-starter</artifactId>-->
+<!--            <groupId>io.seata</groupId>-->
+<!--            <version>1.4.0</version>-->
+<!--        </dependency>-->
 
         <!-- apm-toolkit-logback-1.x -->
         <dependency>
